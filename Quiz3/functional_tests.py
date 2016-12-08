@@ -25,6 +25,8 @@ class NewVisitorTest(unittest.TestCase):
     def test_home_page(self):
         """
 
+     
+
         Quiz 3. Add A Page for me.
 	
 	To this web site, do the following: 
@@ -55,8 +57,20 @@ class NewVisitorTest(unittest.TestCase):
 
         """
 
-	# here is the first test (for free) 
-        self.browser.get('http://localhost:8000/index.html')
+	# here is the first test (for free)
+self.browser.get('http://localhost:8000/index.html')
+self.assertIn('Quiz 3 Morgan Flyer',self.browser.title)
+a=self.browser.find_element_by_tag_name('h1')
+self.assertIn('Quiz 3 Morgan Flyer',a.text)
+m=self.browser.find_element_by_tag_name('img')
+self.assertIn('bare.jpg',m.get_attribute('src'))
+a.click()
+a=self.browser.find_element_by_id('newpage')
+a.click()
+h=self.browser.find_element_by_tag_name('h1')
+self.assertIn("newpage",h.text)
+m=self.browser.find_element_by_tag_name('img')
+self.assertIn('newpage.jpg',m.get_attribute('src'))
 
 if __name__=="__main__":
         unittest.main(warnings="ignore")
